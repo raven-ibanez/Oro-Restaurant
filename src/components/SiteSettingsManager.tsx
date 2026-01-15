@@ -51,10 +51,10 @@ const SiteSettingsManager: React.FC = () => {
   const handleSave = async () => {
     try {
       let logoUrl = logoPreview;
-      
+
       // Upload new logo if selected
       if (logoFile) {
-        const uploadedUrl = await uploadImage(logoFile, 'site-logo');
+        const uploadedUrl = await uploadImage(logoFile);
         logoUrl = uploadedUrl;
       }
 
@@ -151,7 +151,9 @@ const SiteSettingsManager: React.FC = () => {
                   className="w-full h-full object-cover"
                 />
               ) : (
-                <div className="text-2xl text-gray-400">☕</div>
+                <div className="text-2xl text-gray-400">
+                  <Upload className="h-8 w-8 text-gray-300" />
+                </div>
               )}
             </div>
             {isEditing && (

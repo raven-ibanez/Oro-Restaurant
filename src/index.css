@@ -2,14 +2,31 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Ramen Yard Custom Styles */
-/* Minimal helpers for ramen palette when needed outside tailwind tokens */
-.bg-ramen-cream { background-color: #FFF3E0; }
-.bg-ramen-beige { background-color: #F7E7CE; }
-.text-ramen-red { color: #D7263D; }
-.text-ramen-dark { color: #0B0A0A; }
-.border-ramen-sesame { border-color: #D1C7B7; }
-.ring-ramen-gold { --tw-ring-color: #E0A106; }
+/* Oro Restaurant Custom Styles */
+body {
+  @apply font-sans bg-oro-cream text-oro-dark;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  @apply font-serif;
+}
+
+.bg-oro-orange { background-color: #e6681e; }
+.bg-oro-gold { background-color: #f5d142; }
+.text-oro-orange { color: #e6681e; }
+.text-oro-gold { color: #f5d142; }
+
+.glass-morphism {
+  @apply bg-white/70 backdrop-blur-md border border-white/20;
+}
+
+.gold-border {
+  @apply border border-oro-gold/30;
+}
+
+.premium-shadow {
+  box-shadow: 0 10px 30px -10px rgba(230, 104, 30, 0.1);
+}
 
 /* Hide scrollbar for mobile nav */
 .scrollbar-hide {

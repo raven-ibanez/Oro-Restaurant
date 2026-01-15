@@ -31,7 +31,7 @@ const Menu: React.FC<MenuProps> = ({ menuItems, addToCart, cartItems, updateQuan
       // Preload images for visible category first
       const visibleItems = menuItems.filter(item => item.category === activeCategory);
       preloadImages(visibleItems);
-      
+
       // Then preload other images after a short delay
       setTimeout(() => {
         const otherItems = menuItems.filter(item => item.category !== activeCategory);
@@ -48,7 +48,7 @@ const Menu: React.FC<MenuProps> = ({ menuItems, addToCart, cartItems, updateQuan
       const mobileNavHeight = 60; // Mobile nav height
       const offset = headerHeight + mobileNavHeight + 20; // Extra padding
       const elementPosition = element.offsetTop - offset;
-      
+
       window.scrollTo({
         top: elementPosition,
         behavior: 'smooth'
@@ -87,48 +87,54 @@ const Menu: React.FC<MenuProps> = ({ menuItems, addToCart, cartItems, updateQuan
 
   return (
     <>
-      <MobileNav 
+      <MobileNav
         activeCategory={activeCategory}
         onCategoryClick={handleCategoryClick}
       />
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-      <div className="text-center mb-12">
-        <h2 className="text-4xl font-noto font-semibold text-black mb-4">Our Menu</h2>
-        <p className="text-gray-600 max-w-2xl mx-auto">
-          Discover our selection of authentic dim sum, flavorful noodles, and traditional Asian dishes, 
-          all prepared with fresh ingredients and authentic techniques.
-        </p>
-      </div>
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+        <div className="text-center mb-20 animate-slide-up">
+          <span className="text-oro-orange font-bold uppercase tracking-[0.3em] text-xs mb-3 block">Selection</span>
+          <h2 className="text-5xl md:text-6xl font-serif font-bold text-oro-dark mb-6">Our Culinary Offerings</h2>
+          <p className="text-gray-500 max-w-3xl mx-auto font-sans font-light text-lg leading-relaxed">
+            Experience the gold standard of Filipino gastronomy. From our signature meat dishes to our delicate noodles,
+            each plate is a masterpiece of tradition and refined taste.
+          </p>
+          <div className="w-24 h-1 bg-oro-gold mx-auto mt-10" />
+        </div>
 
-      {categories.map((category) => {
-        const categoryItems = menuItems.filter(item => item.category === category.id);
-        
-        if (categoryItems.length === 0) return null;
-        
-        return (
-          <section key={category.id} id={category.id} className="mb-16">
-            <div className="flex items-center mb-8">
-              <span className="text-3xl mr-3">{category.icon}</span>
-              <h3 className="text-3xl font-noto font-medium text-black">{category.name}</h3>
-            </div>
-            
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {categoryItems.map((item) => {
-                const cartItem = cartItems.find(cartItem => cartItem.id === item.id);
-                return (
-                  <MenuItemCard
-                    key={item.id}
-                    item={item}
-                    onAddToCart={addToCart}
-                    quantity={cartItem?.quantity || 0}
-                    onUpdateQuantity={updateQuantity}
-                  />
-                );
-              })}
-            </div>
-          </section>
-        );
-      })}
+        {categories.map((category) => {
+          const categoryItems = menuItems.filter(item => item.category === category.id);
+
+          if (categoryItems.length === 0) return null;
+
+          return (
+            <section key={category.id} id={category.id} className="mb-24 scroll-mt-32">
+              <div className="flex items-center justify-between mb-10 border-b border-oro-gold/10 pb-6">
+                <div className="flex items-center">
+                  <h3 className="text-3xl md:text-4xl font-serif font-bold text-oro-dark tracking-tight">{category.name}</h3>
+                </div>
+                <div className="hidden md:block text-xs font-bold text-oro-orange uppercase tracking-widest bg-oro-cream px-4 py-2 rounded-full border border-oro-gold/20">
+                  {categoryItems.length} {categoryItems.length === 1 ? 'Dish' : 'Dishes'}
+                </div>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {categoryItems.map((item) => {
+                  const cartItem = cartItems.find(cartItem => cartItem.id === item.id);
+                  return (
+                    <MenuItemCard
+                      key={item.id}
+                      item={item}
+                      onAddToCart={addToCart}
+                      quantity={cartItem?.quantity || 0}
+                      onUpdateQuantity={updateQuantity}
+                    />
+                  );
+                })}
+              </div>
+            </section>
+          );
+        })}
       </main>
     </>
   );
