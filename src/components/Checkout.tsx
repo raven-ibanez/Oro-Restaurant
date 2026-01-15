@@ -110,7 +110,7 @@ Thank you for choosing Oro Restaurant. We are preparing your exquisite meal.
 
   if (step === 'details') {
     return (
-      <div className="max-w-6xl mx-auto px-4 py-16 animate-fade-in">
+      <div className="max-w-6xl mx-auto px-4 py-10 md:py-16 animate-fade-in">
         <div className="flex flex-col md:flex-row md:items-center justify-between mb-12 gap-6">
           <div className="flex items-center space-x-6">
             <button
@@ -128,7 +128,7 @@ Thank you for choosing Oro Restaurant. We are preparing your exquisite meal.
             <div className="w-3 h-3 bg-oro-orange rounded-full" />
             <div className="w-20 h-0.5 bg-oro-gold/30" />
             <div className="w-3 h-3 bg-oro-gold/30 rounded-full" />
-            <span className="text-[10px] font-bold uppercase tracking-widest ml-4">Step 1 of 2</span>
+            <span className="text-xs font-bold uppercase tracking-widest ml-4">Step 1 of 2</span>
           </div>
         </div>
 
@@ -137,14 +137,14 @@ Thank you for choosing Oro Restaurant. We are preparing your exquisite meal.
           <div className="lg:col-span-1 space-y-8">
             <div className="bg-oro-dark rounded-2xl shadow-2xl p-8 text-white relative overflow-hidden">
               <div className="absolute top-0 right-0 w-32 h-32 bg-oro-orange/10 rounded-full blur-2xl -mr-16 -mt-16" />
-              <h2 className="text-2xl font-serif font-bold mb-8 border-b border-white/10 pb-4 relative z-10">Selection Summary</h2>
+              <h2 className="text-2xl font-serif font-bold mb-6 md:mb-8 border-b border-white/10 pb-4 relative z-10">Selection Summary</h2>
 
               <div className="space-y-6 mb-8 relative z-10">
                 {cartItems.map((item) => (
                   <div key={item.id} className="flex justify-between gap-4 border-b border-white/5 pb-4">
                     <div className="flex-1">
                       <h4 className="font-serif font-medium text-oro-gold leading-tight mb-1">{item.name}</h4>
-                      <div className="text-[10px] text-white/50 uppercase tracking-widest">
+                      <div className="text-xs text-white/50 uppercase tracking-widest">
                         {item.quantity} {item.quantity === 1 ? 'Unit' : 'Units'} {item.selectedVariation ? `• ${item.selectedVariation.name}` : ''}
                       </div>
                     </div>
@@ -155,7 +155,7 @@ Thank you for choosing Oro Restaurant. We are preparing your exquisite meal.
 
               <div className="pt-4 relative z-10">
                 <div className="flex items-center justify-between mb-2">
-                  <span className="text-white/40 uppercase tracking-[0.2em] text-[10px] font-bold">Total Estimate</span>
+                  <span className="text-white/40 uppercase tracking-[0.2em] text-xs font-bold">Total Estimate</span>
                 </div>
                 <div className="text-4xl font-serif font-bold text-oro-orange">
                   ₱{totalPrice.toFixed(0)}
@@ -171,13 +171,13 @@ Thank you for choosing Oro Restaurant. We are preparing your exquisite meal.
           </div>
 
           {/* Customer Details Form */}
-          <div className="lg:col-span-2 bg-white rounded-2xl shadow-xl premium-shadow border border-oro-gold/10 p-10">
+          <div className="lg:col-span-2 bg-white rounded-2xl shadow-xl premium-shadow border border-oro-gold/10 p-6 md:p-10">
             <h2 className="text-2xl font-serif font-bold text-oro-dark mb-10 border-b border-oro-gold/10 pb-4">Guest Information</h2>
 
             <form className="space-y-8">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <div className="space-y-2">
-                  <label className="text-[10px] font-bold text-oro-orange uppercase tracking-[.2em] ml-1">Full Name</label>
+                  <label className="text-xs font-bold text-oro-orange uppercase tracking-[.2em] ml-1">Full Name</label>
                   <input
                     type="text"
                     value={customerName}
@@ -189,7 +189,7 @@ Thank you for choosing Oro Restaurant. We are preparing your exquisite meal.
                 </div>
 
                 <div className="space-y-2">
-                  <label className="text-[10px] font-bold text-oro-orange uppercase tracking-[.2em] ml-1">Contact Number</label>
+                  <label className="text-xs font-bold text-oro-orange uppercase tracking-[.2em] ml-1">Contact Number</label>
                   <input
                     type="tel"
                     value={contactNumber}
@@ -202,8 +202,8 @@ Thank you for choosing Oro Restaurant. We are preparing your exquisite meal.
               </div>
 
               <div className="space-y-4">
-                <label className="text-[10px] font-bold text-oro-orange uppercase tracking-[.2em] ml-1">Preferred Service</label>
-                <div className="grid grid-cols-3 gap-4">
+                <label className="text-xs font-bold text-oro-orange uppercase tracking-[.2em] ml-1">Preferred Service</label>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                   {[
                     { value: 'dine-in', label: 'Dine In' },
                     { value: 'pickup', label: 'Pickup' },
@@ -218,7 +218,7 @@ Thank you for choosing Oro Restaurant. We are preparing your exquisite meal.
                         : 'border-oro-gold/10 bg-white text-oro-dark hover:border-oro-orange/50'
                         }`}
                     >
-                      <div className="text-xs font-bold uppercase tracking-widest">{option.label}</div>
+                      <div className="text-sm font-bold uppercase tracking-widest">{option.label}</div>
                     </button>
                   ))}
                 </div>
@@ -229,7 +229,7 @@ Thank you for choosing Oro Restaurant. We are preparing your exquisite meal.
                 {serviceType === 'dine-in' && (
                   <div className="space-y-8">
                     <div className="space-y-4">
-                      <label className="text-[10px] font-bold text-oro-orange uppercase tracking-[.2em]">Guest Count</label>
+                      <label className="text-xs font-bold text-oro-orange uppercase tracking-[.2em]">Guest Count</label>
                       <div className="flex items-center space-x-8">
                         <button
                           type="button"
@@ -250,7 +250,7 @@ Thank you for choosing Oro Restaurant. We are preparing your exquisite meal.
                     </div>
 
                     <div className="space-y-4">
-                      <label className="text-[10px] font-bold text-oro-orange uppercase tracking-[.2em]">Reservation Time</label>
+                      <label className="text-xs font-bold text-oro-orange uppercase tracking-[.2em]">Reservation Time</label>
                       <input
                         type="datetime-local"
                         value={dineInTime}
@@ -264,7 +264,7 @@ Thank you for choosing Oro Restaurant. We are preparing your exquisite meal.
 
                 {serviceType === 'pickup' && (
                   <div className="space-y-6">
-                    <label className="text-[10px] font-bold text-oro-orange uppercase tracking-[.2em]">Estimated Arrival</label>
+                    <label className="text-xs font-bold text-oro-orange uppercase tracking-[.2em]">Estimated Arrival</label>
                     <div className="grid grid-cols-2 gap-4">
                       {[
                         { value: '5-10', label: 'Quick Prep' },
@@ -300,7 +300,7 @@ Thank you for choosing Oro Restaurant. We are preparing your exquisite meal.
                 {serviceType === 'delivery' && (
                   <div className="space-y-6">
                     <div className="space-y-2">
-                      <label className="text-[10px] font-bold text-oro-orange uppercase tracking-[.2em]">Full Address</label>
+                      <label className="text-xs font-bold text-oro-orange uppercase tracking-[.2em]">Full Address</label>
                       <textarea
                         value={address}
                         onChange={(e) => setAddress(e.target.value)}
@@ -310,7 +310,7 @@ Thank you for choosing Oro Restaurant. We are preparing your exquisite meal.
                       />
                     </div>
                     <div className="space-y-2">
-                      <label className="text-[10px] font-bold text-oro-orange uppercase tracking-[.2em]">Landmark</label>
+                      <label className="text-xs font-bold text-oro-orange uppercase tracking-[.2em]">Landmark</label>
                       <input
                         type="text"
                         value={landmark}
@@ -324,7 +324,7 @@ Thank you for choosing Oro Restaurant. We are preparing your exquisite meal.
               </div>
 
               <div className="space-y-2">
-                <label className="text-[10px] font-bold text-oro-orange uppercase tracking-[.2em]">Special Requests</label>
+                <label className="text-xs font-bold text-oro-orange uppercase tracking-[.2em]">Special Requests</label>
                 <textarea
                   value={notes}
                   onChange={(e) => setNotes(e.target.value)}
@@ -370,7 +370,7 @@ Thank you for choosing Oro Restaurant. We are preparing your exquisite meal.
           <div className="w-3 h-3 bg-oro-gold/30 rounded-full" />
           <div className="w-20 h-0.5 bg-oro-orange" />
           <div className="w-3 h-3 bg-oro-orange rounded-full shadow-[0_0_10px_rgba(230,104,30,0.5)]" />
-          <span className="text-[10px] font-bold uppercase tracking-widest ml-4">Step 2 of 2</span>
+          <span className="text-xs font-bold uppercase tracking-widest ml-4">Step 2 of 2</span>
         </div>
       </div>
 
@@ -395,7 +395,7 @@ Thank you for choosing Oro Restaurant. We are preparing your exquisite meal.
                       <ShoppingCart className="h-6 w-6" />
                     </div>
                     <div className="text-left">
-                      <span className="block text-[10px] font-bold text-oro-orange uppercase tracking-widest mb-1">Standard</span>
+                      <span className="block text-xs font-bold text-oro-orange uppercase tracking-widest mb-1">Standard</span>
                       <span className="text-lg font-serif font-bold text-oro-dark tracking-tight">{method.name}</span>
                     </div>
                   </div>
@@ -413,15 +413,15 @@ Thank you for choosing Oro Restaurant. We are preparing your exquisite meal.
                 <div className="flex flex-col md:flex-row items-center justify-between gap-8">
                   <div className="flex-1 space-y-4 text-center md:text-left">
                     <div>
-                      <span className="text-[10px] font-bold text-white/40 uppercase tracking-[0.2em] block mb-1">Account Provider</span>
+                      <span className="text-xs font-bold text-white/40 uppercase tracking-[0.2em] block mb-1">Account Provider</span>
                       <p className="font-serif text-xl">{selectedPaymentMethod.name}</p>
                     </div>
                     <div>
-                      <span className="text-[10px] font-bold text-white/40 uppercase tracking-[0.2em] block mb-1">Account Identifier</span>
+                      <span className="text-xs font-bold text-white/40 uppercase tracking-[0.2em] block mb-1">Account Identifier</span>
                       <p className="font-mono text-2xl font-bold text-oro-gold tracking-tight">{selectedPaymentMethod.account_number}</p>
                     </div>
                     <div>
-                      <span className="text-[10px] font-bold text-white/40 uppercase tracking-[0.2em] block mb-1">Account Holder</span>
+                      <span className="text-xs font-bold text-white/40 uppercase tracking-[0.2em] block mb-1">Account Holder</span>
                       <p className="font-medium text-white/80">{selectedPaymentMethod.account_name}</p>
                     </div>
                   </div>
@@ -460,7 +460,7 @@ Thank you for choosing Oro Restaurant. We are preparing your exquisite meal.
             <div className="space-y-8 mb-10">
               <div className="bg-oro-cream/30 rounded-2xl p-6 space-y-4 border border-oro-gold/10">
                 <div className="flex justify-between items-start">
-                  <span className="text-[10px] font-bold text-oro-orange uppercase tracking-widest">Guest Context</span>
+                  <span className="text-xs font-bold text-oro-orange uppercase tracking-widest">Guest Context</span>
                   <div className="text-right">
                     <p className="font-serif font-bold text-oro-dark">{customerName}</p>
                     <p className="text-xs text-gray-500">{serviceType.toUpperCase()} SELECTION</p>
@@ -468,7 +468,7 @@ Thank you for choosing Oro Restaurant. We are preparing your exquisite meal.
                 </div>
                 {serviceType === 'dine-in' && (
                   <div className="flex justify-between items-center border-t border-oro-gold/5 pt-4">
-                    <span className="text-[10px] font-bold text-gray-400 uppercase tracking-widest">Appointment</span>
+                    <span className="text-xs font-bold text-gray-400 uppercase tracking-widest">Appointment</span>
                     <span className="font-serif font-bold text-xs">{dineInTime ? new Date(dineInTime).toLocaleString() : 'Pending'}</span>
                   </div>
                 )}
@@ -479,7 +479,7 @@ Thank you for choosing Oro Restaurant. We are preparing your exquisite meal.
                   <div key={item.id} className="flex justify-between gap-6 py-4 border-b border-oro-gold/5 last:border-0">
                     <div className="flex-1">
                       <h4 className="font-serif font-bold text-oro-dark leading-tight mb-1">{item.name}</h4>
-                      <p className="text-[10px] text-gray-400 font-bold uppercase tracking-widest">
+                      <p className="text-xs text-gray-400 font-bold uppercase tracking-widest">
                         {item.quantity} UNIT{item.quantity > 1 ? 'S' : ''} {item.selectedVariation ? `[${item.selectedVariation.name}]` : ''}
                       </p>
                     </div>
@@ -491,11 +491,11 @@ Thank you for choosing Oro Restaurant. We are preparing your exquisite meal.
 
             <div className="pt-8 border-t border-oro-gold/10 mb-10">
               <div className="flex items-center justify-between mb-2">
-                <span className="text-gray-400 font-bold uppercase tracking-[0.3em] text-[10px]">Total Investment</span>
+                <span className="text-gray-400 font-bold uppercase tracking-[0.3em] text-xs">Total Investment</span>
               </div>
               <div className="flex items-end justify-between">
                 <span className="text-5xl font-serif font-bold text-oro-dark">₱{totalPrice.toFixed(0)}</span>
-                <span className="text-[10px] text-oro-orange font-bold uppercase tracking-widest mb-2">VAT Inclusive</span>
+                <span className="text-xs text-oro-orange font-bold uppercase tracking-widest mb-2">VAT Inclusive</span>
               </div>
             </div>
 
@@ -509,7 +509,7 @@ Thank you for choosing Oro Restaurant. We are preparing your exquisite meal.
               </span>
             </button>
 
-            <p className="text-[10px] text-gray-400 font-bold text-center mt-6 uppercase tracking-[0.2em] leading-relaxed">
+            <p className="text-xs text-gray-400 font-bold text-center mt-6 uppercase tracking-[0.2em] leading-relaxed">
               Redirecting to secure messaging for identity verification and order processing.
             </p>
           </div>

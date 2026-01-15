@@ -91,10 +91,10 @@ const Menu: React.FC<MenuProps> = ({ menuItems, addToCart, cartItems, updateQuan
         activeCategory={activeCategory}
         onCategoryClick={handleCategoryClick}
       />
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 md:py-20">
         <div className="text-center mb-20 animate-slide-up">
           <span className="text-oro-orange font-bold uppercase tracking-[0.3em] text-xs mb-3 block">Selection</span>
-          <h2 className="text-5xl md:text-6xl font-serif font-bold text-oro-dark mb-6">Our Culinary Offerings</h2>
+          <h2 className="text-3xl md:text-6xl font-serif font-bold text-oro-dark mb-6 tracking-tight">Our Culinary Offerings</h2>
           <p className="text-gray-500 max-w-3xl mx-auto font-sans font-light text-lg leading-relaxed">
             Experience the gold standard of Filipino gastronomy. From our signature meat dishes to our delicate noodles,
             each plate is a masterpiece of tradition and refined taste.

@@ -99,15 +99,15 @@ const MenuItemCard: React.FC<MenuItemCardProps> = ({
 
           <div className="absolute top-4 left-4 flex flex-col gap-2 z-10">
             {item.isOnDiscount && item.discountPrice && (
-              <div className="bg-oro-orange text-white text-[10px] font-bold tracking-widest px-3 py-1.5 rounded-sm shadow-lg uppercase">Special Offer</div>
+              <div className="bg-oro-orange text-white text-xs font-bold tracking-widest px-3 py-1.5 rounded-sm shadow-lg uppercase">Special Offer</div>
             )}
             {item.popular && (
-              <div className="bg-oro-gold text-oro-dark text-[10px] font-bold tracking-widest px-3 py-1.5 rounded-sm shadow-lg uppercase">Chef's Selection</div>
+              <div className="bg-oro-gold text-oro-dark text-xs font-bold tracking-widest px-3 py-1.5 rounded-sm shadow-lg uppercase">Chef's Selection</div>
             )}
           </div>
 
           {!item.available && (
-            <div className="absolute top-4 right-4 bg-oro-dark text-white text-[10px] font-bold tracking-widest px-3 py-1.5 rounded-sm shadow-lg uppercase">Sold Out</div>
+            <div className="absolute top-4 right-4 bg-oro-dark text-white text-xs font-bold tracking-widest px-3 py-1.5 rounded-sm shadow-lg uppercase">Sold Out</div>
           )}
           <div className="absolute inset-0 bg-oro-orange/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
         </div>
@@ -192,7 +192,7 @@ const MenuItemCard: React.FC<MenuItemCardProps> = ({
                   <h4 className="font-serif font-bold text-lg text-oro-dark mb-4">Enhance Your Dish</h4>
                   {Object.entries(groupedAddOns).map(([category, addOns]) => (
                     <div key={category} className="mb-6">
-                      <h5 className="text-[10px] font-bold text-oro-orange uppercase tracking-[0.2em] mb-3">{category.replace('-', ' ')}</h5>
+                      <h5 className="text-xs font-bold text-oro-orange uppercase tracking-[0.2em] mb-3">{category.replace('-', ' ')}</h5>
                       <div className="space-y-3">
                         {addOns.map((addOn) => (
                           <div key={addOn.id} className="flex items-center justify-between p-4 border border-oro-gold/10 rounded-xl hover:bg-oro-cream/20 transition-all duration-300">

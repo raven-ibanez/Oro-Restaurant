@@ -2,7 +2,7 @@ import React from 'react';
 
 const Hero: React.FC = () => {
   return (
-    <section className="relative h-[80vh] flex items-center justify-center overflow-hidden">
+    <section className="relative h-[70vh] md:h-[80vh] flex items-center justify-center overflow-hidden">
       {/* Background Image with Overlay */}
       <div className="absolute inset-0 z-0">
         <img
@@ -17,7 +17,7 @@ const Hero: React.FC = () => {
         <span className="block text-oro-gold font-sans font-semibold tracking-[0.3em] uppercase mb-4 animate-fade-in">
           Premium Filipino Cuisine
         </span>
-        <h1 className="text-6xl md:text-8xl font-serif text-white mb-8 animate-slide-up leading-tight">
+        <h1 className="text-4xl sm:text-6xl md:text-8xl font-serif text-white mb-8 animate-slide-up leading-tight">
           Exquisite Flavors,
           <span className="block text-oro-gold">Golden Traditions.</span>
         </h1>

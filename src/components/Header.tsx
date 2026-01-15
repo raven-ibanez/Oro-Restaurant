@@ -39,7 +39,7 @@ const Header: React.FC<HeaderProps> = ({ cartItemsCount, onCartClick, onMenuClic
                   "ORO"
                 )}
               </h1>
-              <span className="text-[10px] uppercase tracking-[0.2em] font-sans font-medium text-oro-orange -mt-1">
+              <span className="text-[11px] uppercase tracking-[0.2em] font-sans font-medium text-oro-orange -mt-1">
                 RESTAURANT
               </span>
             </div>
@@ -52,7 +52,7 @@ const Header: React.FC<HeaderProps> = ({ cartItemsCount, onCartClick, onMenuClic
             >
               <ShoppingCart className="h-6 w-6" />
               {cartItemsCount > 0 && (
-                <span className="absolute -top-1 -right-1 bg-oro-gold text-oro-dark font-bold text-[10px] rounded-full h-5 w-5 flex items-center justify-center animate-bounce-gentle border border-white">
+                <span className="absolute -top-1 -right-1 bg-oro-gold text-oro-dark font-bold text-xs rounded-full h-5 w-5 flex items-center justify-center animate-bounce-gentle border border-white">
                   {cartItemsCount}
                 </span>
               )}

@@ -23,9 +23,9 @@ const SubNav: React.FC<SubNavProps> = ({ selectedCategory, onCategoryClick }) =>
             <>
               <button
                 onClick={() => onCategoryClick('all')}
-                className={`text-[10px] font-bold uppercase tracking-[0.3em] transition-all duration-300 relative group pb-1 ${selectedCategory === 'all'
-                    ? 'text-oro-orange'
-                    : 'text-gray-400 hover:text-oro-dark'
+                className={`text-xs font-bold uppercase tracking-[0.2em] transition-all duration-300 relative group pb-1 ${selectedCategory === 'all'
+                  ? 'text-oro-orange'
+                  : 'text-gray-400 hover:text-oro-dark'
                   }`}
               >
                 All
@@ -37,9 +37,9 @@ const SubNav: React.FC<SubNavProps> = ({ selectedCategory, onCategoryClick }) =>
                 <button
                   key={c.id}
                   onClick={() => onCategoryClick(c.id)}
-                  className={`text-[10px] font-bold uppercase tracking-[0.3em] transition-all duration-300 relative group pb-1 ${selectedCategory === c.id
-                      ? 'text-oro-orange'
-                      : 'text-gray-400 hover:text-oro-dark'
+                  className={`text-xs font-bold uppercase tracking-[0.2em] transition-all duration-300 relative group pb-1 ${selectedCategory === c.id
+                    ? 'text-oro-orange'
+                    : 'text-gray-400 hover:text-oro-dark'
                     }`}
                 >
                   {c.name}
