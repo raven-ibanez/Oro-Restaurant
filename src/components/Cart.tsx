@@ -138,7 +138,6 @@ const Cart: React.FC<CartProps> = ({
             </div>
             <div className="text-right">
               <span className="text-4xl md:text-5xl font-serif font-bold text-oro-gold">₱{(getTotalPrice() || 0).toFixed(0)}</span>
-              <p className="text-[10px] text-white/40 uppercase tracking-widest mt-1">VAT Included</p>
             </div>
           </div>
 

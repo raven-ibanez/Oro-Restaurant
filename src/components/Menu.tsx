@@ -96,7 +96,7 @@ const Menu: React.FC<MenuProps> = ({ menuItems, addToCart, cartItems, updateQuan
           <span className="text-oro-orange font-bold uppercase tracking-[0.3em] text-xs mb-3 block">Selection</span>
           <h2 className="text-3xl md:text-6xl font-serif font-bold text-oro-dark mb-6 tracking-tight">Our Culinary Offerings</h2>
           <p className="text-gray-500 max-w-3xl mx-auto font-sans font-light text-lg leading-relaxed">
-            Experience the gold standard of Filipino gastronomy. From our signature meat dishes to our delicate noodles,
+            Experience the gold standard of Filipino-Chinese gastronomy. From our signature meat dishes to our delicate noodles,
             each plate is a masterpiece of tradition and refined taste.
           </p>
           <div className="w-24 h-1 bg-oro-gold mx-auto mt-10" />

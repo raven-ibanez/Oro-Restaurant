@@ -15,14 +15,14 @@ const Hero: React.FC = () => {
 
       <div className="relative z-10 max-w-5xl mx-auto text-center px-4">
         <span className="block text-oro-gold font-sans font-semibold tracking-[0.3em] uppercase mb-4 animate-fade-in">
-          Premium Filipino Cuisine
+          Premium Filipino-Chinese Cuisine
         </span>
         <h1 className="text-4xl sm:text-6xl md:text-8xl font-serif text-white mb-8 animate-slide-up leading-tight">
           Exquisite Flavors,
           <span className="block text-oro-gold">Golden Traditions.</span>
         </h1>
         <p className="text-xl md:text-2xl text-white/90 mb-10 max-w-3xl mx-auto animate-slide-up delay-100 font-sans font-light">
-          Indulge in a culinary journey where authentic Filipino recipes meet modern elegance.
+          Indulge in a culinary journey where authentic Filipino-Chinese recipes meet modern elegance.
         </p>
         <div className="flex justify-center animate-slide-up delay-200">
           <a

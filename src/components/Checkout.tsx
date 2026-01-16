@@ -86,7 +86,7 @@ ${cartItems.map(item => {
       return itemDetails;
     }).join('\n')}
 
-TOTAL INVESTMENT: ₱${totalPrice.toFixed(0)}
+TOTAL: ₱${totalPrice.toFixed(0)}
 
 PAYMENT METHOD: ${selectedPaymentMethod?.name || paymentMethod}
 PROOF OF PAYMENT: [Please attach screenshot here]
@@ -299,6 +299,11 @@ Thank you for choosing Oro Restaurant. We are preparing your exquisite meal.
 
                 {serviceType === 'delivery' && (
                   <div className="space-y-6">
+                    <div className="bg-oro-orange/10 border border-oro-orange/20 rounded-xl p-4 mb-6 animate-pulse-subtle">
+                      <p className="text-xs text-oro-orange font-bold uppercase tracking-wider text-center">
+                        Note: Delivery fee varies depending on delivery location and available riders.
+                      </p>
+                    </div>
                     <div className="space-y-2">
                       <label className="text-xs font-bold text-oro-orange uppercase tracking-[.2em]">Full Address</label>
                       <textarea
@@ -406,7 +411,7 @@ Thank you for choosing Oro Restaurant. We are preparing your exquisite meal.
               ))}
             </div>
 
-            {selectedPaymentMethod && (
+            {selectedPaymentMethod && paymentMethod !== 'cod' && (
               <div className="bg-oro-dark rounded-2xl p-8 text-white relative overflow-hidden animate-slide-up shadow-2xl">
                 <div className="absolute top-0 right-0 w-32 h-32 bg-oro-orange/20 rounded-full blur-2xl -mr-16 -mt-16" />
                 <h3 className="font-serif font-bold text-lg mb-6 text-oro-gold border-b border-white/10 pb-4">Payment Information</h3>
@@ -434,6 +439,21 @@ Thank you for choosing Oro Restaurant. We are preparing your exquisite meal.
                     />
                     <p className="text-[8px] text-oro-dark font-bold text-center mt-2 uppercase tracking-widest">Instant Settlement</p>
                   </div>
+                </div>
+              </div>
+            )}
+
+            {paymentMethod === 'cod' && (
+              <div className="bg-oro-dark rounded-2xl p-8 text-white relative overflow-hidden animate-slide-up shadow-2xl">
+                <div className="absolute top-0 right-0 w-32 h-32 bg-oro-gold/20 rounded-full blur-2xl -mr-16 -mt-16" />
+                <h3 className="font-serif font-bold text-lg mb-6 text-oro-gold border-b border-white/10 pb-4">Cash on Delivery</h3>
+                <div className="space-y-4">
+                  <p className="text-white/80 leading-relaxed font-serif text-lg">
+                    Balance for your selection will be collected upon arrival.
+                  </p>
+                  <p className="text-xs text-white/40 uppercase tracking-[0.2em] leading-relaxed">
+                    Please ensure someone is available at the provided address to receive the delivery and settle the outstanding amount.
+                  </p>
                 </div>
               </div>
             )}
@@ -491,11 +511,10 @@ Thank you for choosing Oro Restaurant. We are preparing your exquisite meal.
 
             <div className="pt-8 border-t border-oro-gold/10 mb-10">
               <div className="flex items-center justify-between mb-2">
-                <span className="text-gray-400 font-bold uppercase tracking-[0.3em] text-xs">Total Investment</span>
+                <span className="text-gray-400 font-bold uppercase tracking-[0.3em] text-xs">Total</span>
               </div>
               <div className="flex items-end justify-between">
                 <span className="text-5xl font-serif font-bold text-oro-dark">₱{totalPrice.toFixed(0)}</span>
-                <span className="text-xs text-oro-orange font-bold uppercase tracking-widest mb-2">VAT Inclusive</span>
               </div>
             </div>
 

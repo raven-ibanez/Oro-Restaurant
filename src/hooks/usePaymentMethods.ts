@@ -21,7 +21,7 @@ export const usePaymentMethods = () => {
   const fetchPaymentMethods = async () => {
     try {
       setLoading(true);
-      
+
       const { data, error: fetchError } = await supabase
         .from('payment_methods')
         .select('*')
@@ -30,7 +30,25 @@ export const usePaymentMethods = () => {
 
       if (fetchError) throw fetchError;
 
-      setPaymentMethods(data || []);
+      const methods = data || [];
+      const hasCod = methods.some(m => m.id === 'cod');
+
+      if (!hasCod) {
+        const codMethod: PaymentMethod = {
+          id: 'cod',
+          name: 'Cash on Delivery',
+          account_number: 'Pay upon arrival',
+          account_name: 'Cash on Delivery',
+          qr_code_url: '',
+          active: true,
+          sort_order: 0,
+          created_at: new Date().toISOString(),
+          updated_at: new Date().toISOString()
+        };
+        setPaymentMethods([codMethod, ...methods]);
+      } else {
+        setPaymentMethods(methods);
+      }
       setError(null);
     } catch (err) {
       console.error('Error fetching payment methods:', err);
@@ -43,7 +61,7 @@ export const usePaymentMethods = () => {
   const fetchAllPaymentMethods = async () => {
     try {
       setLoading(true);
-      
+
       const { data, error: fetchError } = await supabase
         .from('payment_methods')
         .select('*')
@@ -51,7 +69,25 @@ export const usePaymentMethods = () => {
 
       if (fetchError) throw fetchError;
 
-      setPaymentMethods(data || []);
+      const methods = data || [];
+      const hasCod = methods.some(m => m.id === 'cod');
+
+      if (!hasCod) {
+        const codMethod: PaymentMethod = {
+          id: 'cod',
+          name: 'Cash on Delivery',
+          account_number: 'Pay upon arrival',
+          account_name: 'Cash on Delivery',
+          qr_code_url: '',
+          active: true,
+          sort_order: 0,
+          created_at: new Date().toISOString(),
+          updated_at: new Date().toISOString()
+        };
+        setPaymentMethods([codMethod, ...methods]);
+      } else {
+        setPaymentMethods(methods);
+      }
       setError(null);
     } catch (err) {
       console.error('Error fetching all payment methods:', err);
