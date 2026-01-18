@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Plus, Minus, X, ShoppingCart } from 'lucide-react';
+import { Plus, Minus, X, ShoppingCart, Crown } from 'lucide-react';
 import { MenuItem, Variation, AddOn } from '../types';
 
 interface MenuItemCardProps {
@@ -130,8 +130,13 @@ const MenuItemCard: React.FC<MenuItemCardProps> = ({
 
                 {/* Visual badges for popular/discount items */}
                 {(item.popular || item.isOnDiscount) && (
-                  <div className="flex gap-1">
-                    {item.popular && <span className="w-1.5 h-1.5 rounded-full bg-oro-gold" title="Popular" />}
+                  <div className="flex items-center gap-1.5 ml-1">
+                    {item.popular && (
+                      <Crown
+                        className="h-3.5 w-3.5 text-[#CDA05E] fill-[#CDA05E]/10"
+                        strokeWidth={2.5}
+                      />
+                    )}
                     {item.isOnDiscount && <span className="w-1.5 h-1.5 rounded-full bg-oro-orange" title="Discount" />}
                   </div>
                 )}
@@ -189,7 +194,7 @@ const MenuItemCard: React.FC<MenuItemCardProps> = ({
                 <div className="mb-8">
                   <h4 className="font-serif font-bold text-lg text-oro-dark mb-4">Select Serving Size</h4>
                   <div className="space-y-3">
-                    {item.variations.map((variation) => (
+                    {item.variations.map((variation: Variation) => (
                       <label key={variation.id} className={`flex items-center justify-between p-4 border rounded-xl cursor-pointer transition-all duration-300 ${selectedVariation?.id === variation.id ? 'border-oro-orange bg-oro-cream ring-1 ring-oro-orange' : 'border-oro-gold/20 hover:border-oro-orange/50 hover:bg-oro-cream/30'}`}>
                         <div className="flex items-center space-x-4">
                           <input type="radio" name="variation" checked={selectedVariation?.id === variation.id} onChange={() => setSelectedVariation(variation)} className="w-5 h-5 text-oro-orange focus:ring-oro-orange" />

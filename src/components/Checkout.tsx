@@ -17,7 +17,7 @@ const Checkout: React.FC<CheckoutProps> = ({ cartItems, totalPrice, onBack }) =>
   const [serviceType, setServiceType] = useState<ServiceType>('dine-in');
   const [address, setAddress] = useState('');
   const [landmark, setLandmark] = useState('');
-  const [pickupTime, setPickupTime] = useState('5-10');
+  const [pickupTime] = useState('custom');
   const [customTime, setCustomTime] = useState('');
   // Dine-in specific state
   const [partySize, setPartySize] = useState(1);
@@ -264,36 +264,23 @@ Thank you for choosing Oro Restaurant. We are preparing your exquisite meal.
 
                 {serviceType === 'pickup' && (
                   <div className="space-y-6">
-                    <label className="text-xs font-bold text-oro-orange uppercase tracking-[.2em]">Estimated Arrival</label>
-                    <div className="grid grid-cols-2 gap-4">
-                      {[
-                        { value: '5-10', label: 'Quick Prep' },
-                        { value: '15-20', label: 'Standard' },
-                        { value: '25-30', label: 'Relaxed' },
-                        { value: 'custom', label: 'Specify Time' }
-                      ].map((option) => (
-                        <button
-                          key={option.value}
-                          type="button"
-                          onClick={() => setPickupTime(option.value)}
-                          className={`p-4 rounded-xl border transition-all duration-300 text-xs font-bold uppercase tracking-widest ${pickupTime === option.value
-                            ? 'bg-oro-dark text-white border-oro-dark shadow-md'
-                            : 'bg-white text-oro-dark border-oro-gold/20 hover:border-oro-orange'
-                            }`}
-                        >
-                          {option.label}
-                        </button>
-                      ))}
+                    <div className="bg-oro-orange/10 border border-oro-orange/20 rounded-xl p-4 mb-6 animate-pulse-subtle">
+                      <p className="text-xs text-oro-orange font-bold uppercase tracking-wider text-center">
+                        Note: Cooking time varies from 15 to 20 minutes (except for Patatim and Crispy Pata)
+                      </p>
                     </div>
-                    {pickupTime === 'custom' && (
+
+                    <div className="space-y-2">
+                      <label className="text-xs font-bold text-oro-orange uppercase tracking-[0.2em] ml-1">Preferred Pickup Time</label>
                       <input
                         type="text"
                         value={customTime}
                         onChange={(e) => setCustomTime(e.target.value)}
-                        className="w-full px-6 py-4 bg-white border border-oro-gold/20 rounded-xl focus:ring-1 focus:ring-oro-orange outline-none mt-4"
+                        className="w-full px-6 py-4 bg-white border border-oro-gold/20 rounded-xl focus:ring-1 focus:ring-oro-orange outline-none"
                         placeholder="e.g., 4:30 PM"
+                        required
                       />
-                    )}
+                    </div>
                   </div>
                 )}
 
