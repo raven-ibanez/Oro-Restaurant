@@ -82,76 +82,91 @@ const MenuItemCard: React.FC<MenuItemCardProps> = ({
 
   return (
     <>
-      <div className={`bg-white rounded-2xl shadow-sm hover:shadow-2xl transition-all duration-500 overflow-hidden group animate-scale-in border border-oro-gold/10 ${!item.available ? 'opacity-60' : ''}`}>
-        <div className="relative h-56 bg-gradient-to-br from-oro-cream to-white overflow-hidden">
-          {item.image ? (
-            <img
-              src={item.image}
-              alt={item.name}
-              className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-              loading="lazy"
-              onError={(e) => { e.currentTarget.style.display = 'none'; }}
-            />
-          ) : null}
-          <div className="absolute inset-0 flex items-center justify-center opacity-10 filter grayscale">
-            <span className="font-serif font-bold text-oro-gold text-4xl tracking-widest opacity-20">ORO</span>
-          </div>
-
-          <div className="absolute top-4 left-4 flex flex-col gap-2 z-10">
-            {item.isOnDiscount && item.discountPrice && (
-              <div className="bg-oro-orange text-white text-xs font-bold tracking-widest px-3 py-1.5 rounded-sm shadow-lg uppercase">Special Offer</div>
+      <div className={`bg-white rounded-xl shadow-sm hover:shadow-md transition-all duration-300 overflow-hidden group border border-oro-gold/10 ${!item.available ? 'opacity-60' : ''}`}>
+        <div className="flex items-center p-3 gap-4">
+          {/* Image Section */}
+          <div className="relative h-20 w-20 flex-shrink-0 bg-oro-cream rounded-lg overflow-hidden group-hover:shadow-inner transition-all duration-500">
+            {item.image ? (
+              <img
+                src={item.image}
+                alt={item.name}
+                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                loading="lazy"
+                onError={(e) => { e.currentTarget.style.display = 'none'; }}
+              />
+            ) : (
+              <div className="absolute inset-0 flex items-center justify-center opacity-10 filter grayscale">
+                <span className="font-serif font-bold text-oro-gold text-lg tracking-widest opacity-20">ORO</span>
+              </div>
             )}
-            {item.popular && (
-              <div className="bg-oro-gold text-oro-dark text-xs font-bold tracking-widest px-3 py-1.5 rounded-sm shadow-lg uppercase">Chef's Selection</div>
+
+            {/* Minimal overlays for horizontal design */}
+            {!item.available && (
+              <div className="absolute inset-0 bg-oro-dark/40 flex items-center justify-center">
+                <span className="text-[8px] font-bold text-white uppercase tracking-tighter">Sold Out</span>
+              </div>
             )}
           </div>
 
-          {!item.available && (
-            <div className="absolute top-4 right-4 bg-oro-dark text-white text-xs font-bold tracking-widest px-3 py-1.5 rounded-sm shadow-lg uppercase">Sold Out</div>
-          )}
-          <div className="absolute inset-0 bg-oro-orange/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-        </div>
+          {/* Content Section */}
+          <div className="flex-1 min-w-0">
+            <div className="flex flex-col gap-0.5">
+              <h4 className="text-base font-serif font-bold text-oro-dark leading-tight line-clamp-1 group-hover:text-oro-orange transition-colors duration-300">
+                {item.name}
+              </h4>
+              <p className={`text-xs leading-tight font-sans line-clamp-1 mb-1 ${!item.available ? 'text-gray-400 font-light' : 'text-gray-600 font-light'}`}>
+                {!item.available ? 'Currently unavailable' : item.description}
+              </p>
 
-        <div className="p-6">
-          <div className="flex items-start justify-between mb-2">
-            <h4 className="text-xl font-serif font-bold text-oro-dark leading-tight flex-1 pr-2 tracking-tight group-hover:text-oro-orange transition-colors duration-300">
-              {item.name}
-            </h4>
-          </div>
-
-          <p className={`text-sm mb-6 leading-relaxed font-sans line-clamp-2 min-h-[2.5rem] ${!item.available ? 'text-gray-400 font-light' : 'text-gray-600 font-light'}`}>
-            {!item.available ? 'This exquisite dish is currently unavailable.' : item.description}
-          </p>
-
-          <div className="flex items-end justify-between border-t border-oro-gold/10 pt-4">
-            <div className="flex-1">
-              {item.isOnDiscount && item.discountPrice ? (
-                <div className="space-y-0.5">
-                  <div className="flex items-center space-x-2">
-                    <span className="text-lg text-gray-400 line-through font-light decoration-oro-orange/30">₱{item.basePrice.toFixed(0)}</span>
-                    <span className="text-2xl font-bold text-oro-orange font-serif">₱{item.discountPrice.toFixed(0)}</span>
+              <div className="flex items-center gap-2">
+                {item.isOnDiscount && item.discountPrice ? (
+                  <div className="flex items-center gap-1.5">
+                    <span className="text-[10px] text-gray-400 line-through font-light decoration-oro-orange/30">₱{item.basePrice.toFixed(0)}</span>
+                    <span className="text-sm font-bold text-oro-orange font-serif">₱{item.discountPrice.toFixed(0)}</span>
                   </div>
-                </div>
-              ) : (
-                <div className="text-2xl font-bold text-oro-dark font-serif">₱{item.basePrice.toFixed(0)}</div>
-              )}
-            </div>
+                ) : (
+                  <div className="text-sm font-bold text-oro-dark font-serif">₱{item.basePrice.toFixed(0)}</div>
+                )}
 
-            <div className="flex-shrink-0">
-              {!item.available ? (
-                <button disabled className="bg-gray-100 text-gray-400 px-5 py-2.5 rounded-full font-bold text-xs uppercase tracking-widest border border-gray-200">Sold Out</button>
-              ) : quantity === 0 ? (
-                <button onClick={handleAddToCart} className="h-11 px-7 bg-oro-dark text-white rounded-full transition-all duration-300 hover:bg-oro-orange shadow-lg">
-                  <span className="font-bold text-xs uppercase tracking-widest">{item.variations?.length || item.addOns?.length ? 'Customize' : 'Add to Plate'}</span>
-                </button>
-              ) : (
-                <div className="flex items-center space-x-3 bg-oro-cream rounded-full px-2 py-1.5 border border-oro-gold/20 shadow-inner">
-                  <button onClick={handleDecrement} className="p-1.5 hover:bg-white rounded-full transition-all duration-300 text-oro-orange"><Minus className="h-4 w-4" /></button>
-                  <span className="font-bold text-oro-dark min-w-[20px] text-center font-serif text-lg">{quantity}</span>
-                  <button onClick={handleIncrement} className="p-1.5 hover:bg-white rounded-full transition-all duration-300 text-oro-orange"><Plus className="h-4 w-4" /></button>
-                </div>
-              )}
+                {/* Visual badges for popular/discount items */}
+                {(item.popular || item.isOnDiscount) && (
+                  <div className="flex gap-1">
+                    {item.popular && <span className="w-1.5 h-1.5 rounded-full bg-oro-gold" title="Popular" />}
+                    {item.isOnDiscount && <span className="w-1.5 h-1.5 rounded-full bg-oro-orange" title="Discount" />}
+                  </div>
+                )}
+              </div>
             </div>
+          </div>
+
+          {/* Action Section */}
+          <div className="flex-shrink-0 flex flex-col items-center justify-center">
+            {!item.available ? (
+              <button disabled className="text-[10px] font-bold text-gray-400 uppercase tracking-widest px-2 py-1">Sold Out</button>
+            ) : quantity === 0 ? (
+              <button
+                onClick={handleAddToCart}
+                className="h-8 px-4 bg-transparent text-oro-dark border border-oro-dark/10 rounded-full transition-all duration-300 hover:bg-oro-dark hover:text-white hover:shadow-md active:scale-95"
+              >
+                <span className="font-bold text-[10px] uppercase tracking-widest">{item.variations?.length || item.addOns?.length ? 'Customize' : 'Add'}</span>
+              </button>
+            ) : (
+              <div className="flex items-center space-x-2 bg-oro-cream/50 rounded-full px-1.5 py-1 border border-oro-gold/10">
+                <button
+                  onClick={handleDecrement}
+                  className="p-1 hover:bg-white rounded-full transition-all duration-300 text-oro-orange"
+                >
+                  <Minus className="h-3 w-3" />
+                </button>
+                <span className="font-bold text-oro-dark min-w-[14px] text-center font-serif text-xs">{quantity}</span>
+                <button
+                  onClick={handleIncrement}
+                  className="p-1 hover:bg-white rounded-full transition-all duration-300 text-oro-orange"
+                >
+                  <Plus className="h-3 w-3" />
+                </button>
+              </div>
+            )}
           </div>
         </div>
       </div>
