@@ -111,7 +111,7 @@ const MenuItemCard: React.FC<MenuItemCardProps> = ({
           {/* Content Section */}
           <div className="flex-1 min-w-0 py-1">
             <div className="flex flex-col gap-0.5">
-              <h4 className="text-base font-serif font-bold text-oro-dark leading-tight line-clamp-1 group-hover:text-oro-orange transition-colors duration-300">
+              <h4 className="text-base font-serif font-bold text-oro-dark leading-tight group-hover:text-oro-orange transition-colors duration-300">
                 {item.name}
               </h4>
               <p className={`text-xs leading-relaxed font-sans mb-2 ${!item.available ? 'text-gray-400 font-light' : 'text-gray-600 font-light'}`}>
