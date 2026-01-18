@@ -83,7 +83,7 @@ const MenuItemCard: React.FC<MenuItemCardProps> = ({
   return (
     <>
       <div className={`bg-white rounded-xl shadow-sm hover:shadow-md transition-all duration-300 overflow-hidden group border border-oro-gold/10 ${!item.available ? 'opacity-60' : ''}`}>
-        <div className="flex items-center p-3 gap-4">
+        <div className="flex items-start p-3 gap-4">
           {/* Image Section */}
           <div className="relative h-20 w-20 flex-shrink-0 bg-oro-cream rounded-lg overflow-hidden group-hover:shadow-inner transition-all duration-500">
             {item.image ? (
@@ -109,12 +109,12 @@ const MenuItemCard: React.FC<MenuItemCardProps> = ({
           </div>
 
           {/* Content Section */}
-          <div className="flex-1 min-w-0">
+          <div className="flex-1 min-w-0 py-1">
             <div className="flex flex-col gap-0.5">
               <h4 className="text-base font-serif font-bold text-oro-dark leading-tight line-clamp-1 group-hover:text-oro-orange transition-colors duration-300">
                 {item.name}
               </h4>
-              <p className={`text-xs leading-tight font-sans line-clamp-1 mb-1 ${!item.available ? 'text-gray-400 font-light' : 'text-gray-600 font-light'}`}>
+              <p className={`text-xs leading-relaxed font-sans mb-2 ${!item.available ? 'text-gray-400 font-light' : 'text-gray-600 font-light'}`}>
                 {!item.available ? 'Currently unavailable' : item.description}
               </p>
 
